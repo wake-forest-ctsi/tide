@@ -1,5 +1,8 @@
 FROM alpine:3.14
 
+COPY security/wakehealth-root-ca.crt /usr/local/share/ca-certificates/local-root-ca.crt
+RUN cat /usr/local/share/ca-certificates/local-root-ca.crt >> /etc/ssl/certs/ca-certificates.crt 
+
 RUN  apk update \
   && apk upgrade \
   && apk add ca-certificates \
